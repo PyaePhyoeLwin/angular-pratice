@@ -7,39 +7,34 @@
       <th>category</th>
       <th>price</th>
     </tr>
-    <tr *ngFor="let product of products">
+    <tr *ngFor="let product of filteredProducts">
       <!-- {{product | json}} -->
       <!-- <td *ngIf="product.category === ''">{{ product.id }}</td>
       <td *ngIf="product.category === ''">{{ product.name }}</td>
       <td *ngIf="product.category === ''">{{ product.code_num }}</td>
       <td *ngIf="product.category === ''">{{ product.category }}</td>
       <td *ngIf="product.category === ''">{{ product.price }}</td> -->
-      <td *ngIf="product.category === value">{{ product.id }}</td>
-      <td *ngIf="product.category === value">{{ product.name }}</td>
-      <td *ngIf="product.category === value">{{ product.code_num }}</td>
-      <td *ngIf="product.category === value">{{ product.category }}</td>
-      <td *ngIf="product.category === value">{{ product.price }}</td>
+      <td>{{ product.id }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.code_num }}</td>
+      <td>{{ product.category }}</td>
+      <td>{{ product.price }}</td>
     </tr>
   </table>
 </div>
 <div [style.paddingTop]="'20px'">
   <select
     [(ngModel)]="value"
-    (change)="toggleAll()"
+    (change)="toggleAll(); filterProductCategory()"
     [style.backgroundColor]="'gray'"
   >
     <option [ngValue]="null">Not Selected</option>
-    <ng-container *ngFor="let product of products">
-      <option *ngIf="product.category === 'shoes' && product.id === 1">
-        {{ product.category }}
-      </option>
-      <option *ngIf="product.category === 'clothes' && product.id === 3">
-        {{ product.category }}
-      </option>
-      <option *ngIf="product.category === 'sunglass' && product.id === 4">
-        {{ product.category }}
-      </option>
-    </ng-container>
+    <option
+      *ngFor="let productCategory of productCategories"
+      [value]="productCategory"
+    >
+      {{ productCategory }}
+    </option>
   </select>
 
   <!-- <option class="test">{{ [value] }}</option> -->
