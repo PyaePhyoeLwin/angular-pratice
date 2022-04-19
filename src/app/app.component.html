@@ -1,19 +1,13 @@
 <div>
   <table style="width:100%">
     <tr>
-      <th>id</th>
+      <th appHighlight>id</th>
       <th>name</th>
       <th>code_num</th>
       <th>category</th>
       <th>price</th>
     </tr>
     <tr *ngFor="let product of filteredProducts">
-      <!-- {{product | json}} -->
-      <!-- <td *ngIf="product.category === ''">{{ product.id }}</td>
-      <td *ngIf="product.category === ''">{{ product.name }}</td>
-      <td *ngIf="product.category === ''">{{ product.code_num }}</td>
-      <td *ngIf="product.category === ''">{{ product.category }}</td>
-      <td *ngIf="product.category === ''">{{ product.price }}</td> -->
       <td>{{ product.id }}</td>
       <td>{{ product.name }}</td>
       <td>{{ product.code_num }}</td>
@@ -28,19 +22,15 @@
     (change)="toggleAll(); filterProductCategory()"
     [style.backgroundColor]="'gray'"
   >
-    <option [ngValue]="null">Not Selected</option>
+    <option [ngValue]="null" appHighlight >Not Selected</option>
     <option
       *ngFor="let productCategory of productCategories"
       [value]="productCategory"
+      
     >
       {{ productCategory }}
     </option>
   </select>
-
-  <!-- <option class="test">{{ [value] }}</option> -->
-  <!-- <div *ngFor="let product of products">
-    <div (change)="showShoesName()" *ngIf="product.category === 'shoes'">
-      {{ product.name }}
-    </div>
-  </div> -->
 </div>
+
+<p appHighlight >Highlight me!</p>
